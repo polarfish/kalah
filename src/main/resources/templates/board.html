@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Refresh" content="4">
+
+    <title>Kalah</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <style>
+        .board > .row > div {
+            text-align: center;
+        }
+
+        .board button.btn {
+            border-radius: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<nav th:replace="fragments :: menu"></nav>
+
+<div class="container">
+    <div th:replace="fragments :: error"></div>
+
+    <div class="alert alert-info" th:if="${status?.toString()} == 'NOT_STARTED'">
+        The game is not started - waiting for an opponent
+    </div>
+
+    <div class="alert alert-info" th:if="${status?.toString()} == 'NOT_STARTED'">
+        Use this link to join the game <a th:text="${joinURL}" th:href="${joinURL}">[...]</a>
+    </div>
+
+    <div class="alert alert-success" th:if="${status?.toString()} == 'FINISHED'">
+        The game is finished
+    </div>
+
+    <div class="alert alert-warning" th:if="${status?.toString()} == 'ABORTED'">
+        The game was aborted
+    </div>
+
+    <div class="alert alert-info" th:if="${status?.toString()} == 'STARTED'"
+         th:text="'It is the turn of ' + (${board.playersTurn} ? ${board.player.name} : ${board.opponent.name})">
+        [...]
+    </div>
+
+    <div th:unless="${board == null}" class="board">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 th:text="${board.opponent.name}">[...]</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div th:each="pit,itrStat : ${board.opponentsPitsReversed}" class="col-sm-1">
+                <button class="btn btn-lg" disabled th:text="${pit}">[...]</button>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <button class="btn btn-lg btn-success" disabled th:text="${board.opponentsHouse}">[...]</button>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-2">
+                <button class="btn btn-lg btn-success" disabled th:text="${board.playersHouse}">[...]</button>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div th:each="pit,itrStat : ${board.playersPits}" class="col-sm-1">
+
+                <form th:if="${currentUserIsPlayer} and ${board.playersTurn} == true and ${pit} != 0" class="form-inline" action="/game/turn" method="post">
+                    <input name="pitIndex" type="hidden" th:value="${itrStat.index}">
+                    <button class="btn btn-lg btn-info" th:text="${pit}">[...]</button>
+                </form>
+
+                <button th:unless="${currentUserIsPlayer} and ${board.playersTurn} == true and ${pit} != 0" class="btn btn-lg" disabled th:text="${pit}">[...]</button>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 th:text="${board.player.name}">[...]</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

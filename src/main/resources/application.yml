@@ -1,0 +1,4 @@
+server:
+    session:
+        timeout: 1200
+    port: 80

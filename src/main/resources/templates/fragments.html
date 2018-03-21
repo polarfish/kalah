@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<nav class="navbar navbar-inverse" th:fragment="menu">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Kalah</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/game">Game</a>
+                </li>
+                <li th:unless="${session.currentGameId == null}">
+                    <p class="navbar-btn">
+                    <form class="form-inline" action="/game/leave" method="post">
+                        <button class="btn btn-secondary">Leave the game</button>
+                    </form>
+                    </p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li th:unless="${session.player == null}">
+                    <a href="/user" th:text="${session?.player?.name}">[...]</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="alert alert-danger" th:fragment="error" th:unless="${error == null}" th:text="${error}">
+    [...]
+</div>

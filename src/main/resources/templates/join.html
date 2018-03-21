@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kalah</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+</head>
+<body>
+
+<nav th:replace="fragments :: menu"></nav>
+
+<div class="container">
+    <div th:replace="fragments :: error"></div>
+
+    <form class="form-inline" action="/game/join" th:unless="${gameId == null}" method="post">
+        <input name="gameIdString" type="hidden" th:value="${gameId}">
+        <button class="btn btn-success">Join the game</button>
+    </form>
+
+</div>
+
+</body>
+</html>

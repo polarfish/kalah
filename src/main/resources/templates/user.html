@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kalah</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+</head>
+<body>
+
+<nav th:replace="fragments :: menu"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <form class="form-inline" action="/user" method="post">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="username">What is your name?</label>
+                        <input type="text" id="username" name="username" th:value="${session?.player?.name}" class="input-xlarge">
+                        <button class="btn btn-success">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
