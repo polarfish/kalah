@@ -1,5 +1,5 @@
 # Kalah
-The game of Kalah in a form of a web application (built with Spring Boot)
+The game of Kalah in form of web application (built with Spring Boot)
 
 ### Game rules
 
@@ -18,6 +18,10 @@ $ ./gradlew bootRun
 
 The game is configured to work on port 80
 
-### Screenshot
+### Live demo
+
+[http://kalah.polarfish.space](http://kalah.polarfish.space)
+
+### Screenshots
 
 ![Screenshot of Kalah](/src/main/resources/static/screenshot.png?raw=true)
