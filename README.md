@@ -14,7 +14,7 @@ The game provides a Kalah board and a number of seeds or counters. The board has
 
 ### Running the game
 
-$ ./gradlew bootRun
+```$ ./gradlew bootRun```
 
 The game is configured to work on port 80
 
