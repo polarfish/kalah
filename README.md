@@ -18,10 +18,6 @@ $ ./gradlew bootRun
 
 The game is configured to work on port 80
 
-### Live demo
-
-[http://kalah.polarfish.space](http://kalah.polarfish.space)
-
 ### Screenshots
 
 ![Screenshot of Kalah](/src/main/resources/static/screenshot.png?raw=true)
