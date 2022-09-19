@@ -1,5 +1,5 @@
 # Kalah
-The game of Kalah in form of web application (built with Spring Boot)
+The game of Kalah in form of web application (built with Spring Boot).
 
 ### Game rules
 
